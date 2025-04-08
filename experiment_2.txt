@@ -8,7 +8,7 @@ create table Employee(
     ename varchar(255),
     job varchar(255),
     mgr int,
-    sal decimal(10,2),
+    sal decimal(10,2)
 );
 desc Employee;
 
@@ -26,4 +26,4 @@ select* from Employee;
 
 alter table Employee modify job varchar(100);
 rename table Employee to Emp;
-delete from Employee where empno=1;
+delete from Emp where empno=1;
