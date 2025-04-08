@@ -40,20 +40,15 @@ BEGIN
   DECLARE n_id INT;
   DECLARE n_name VARCHAR(255);
   DECLARE n_birth_date DATE;
-
   DECLARE n_cursor CURSOR FOR
     SELECT student_id, student_name, birth_date FROM N_RollCall;
-
   DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
-
   OPEN n_cursor;
-
   cursor_loop: LOOP
     FETCH n_cursor INTO n_id, n_name, n_birth_date;
     IF done THEN
       LEAVE cursor_loop;
     END IF;
-
     IF NOT EXISTS (
       SELECT 1 FROM O_RollCall WHERE student_id = n_id
     ) THEN
@@ -61,7 +56,6 @@ BEGIN
       VALUES (n_id, n_name, n_birth_date);
     END IF;
   END LOOP;
-
   CLOSE n_cursor;
 END//
 DELIMITER ;

@@ -38,7 +38,6 @@ BEGIN
 
   OPEN emp_cursor;
   SET @finished = 0;
-
   cursor_loop: LOOP
     FETCH emp_cursor INTO emp_id, emp_name, emp_age, emp_salary;
     IF @finished = 1 THEN
